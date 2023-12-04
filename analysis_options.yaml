@@ -1,0 +1,12 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - lib/**/*.g.dart
+
+linter:
+  rules:
+    prefer_relative_imports: true
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    always_declare_return_types: true
