@@ -15,3 +15,7 @@ export 'src/widgets/empty_placeholder.dart';
 export 'src/widgets/snack_bar/error_icon.dart';
 export 'src/widgets/snack_bar/success_icon.dart';
 export 'src/widgets/snack_bar/loading_icon.dart';
+export 'src/widgets/app_text_form_field.dart';
+export 'src/form_validators/validation_rule.dart';
+export 'src/form_validators/min_length_validation_rule.dart';
+export 'src/form_validators/required_validation_rule.dart';
