@@ -3,11 +3,10 @@ import 'validation_rule.dart';
 class MinLengthValidationRule extends ValidationRule {
   final int minLength;
 
-  MinLengthValidationRule(
-    this.minLength,
-  ) {
-    errorMessage = 'Minimum length is $minLength';
-  }
+  MinLengthValidationRule({
+    required this.minLength,
+    String? errorMessage,
+  }) : super(errorMessage: errorMessage ?? 'Minimum length is $minLength');
 
   @override
   bool validate(dynamic value) {

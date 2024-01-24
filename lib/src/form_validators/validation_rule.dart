@@ -1,4 +1,9 @@
 abstract class ValidationRule {
-  String? errorMessage;
+  ValidationRule({
+    this.errorMessage,
+  });
+
+  final String? errorMessage;
+
   bool validate(dynamic value);
 }
