@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_foundation/main.dart';
+import 'package:my_foundation/foundation.dart';
 
 class BaseRepositoryTest extends BaseRepository {}
 
