@@ -1,6 +1,6 @@
 import '../data/error/error_handler.dart';
 import '../entities/failure.dart';
-import '../print/debug_print.dart';
+import '../logging/logger.dart';
 
 typedef Task<T> = Future<T> Function();
 
@@ -10,15 +10,19 @@ abstract class BaseRepository<EH extends ErrorHandler> {
   BaseRepository({this.errorHandler});
 
   Future<(Failure?, T?)> doAsync<T>(
-    Task<T> task,
-  ) async {
+    Task<T> task, {
+    String? label,
+  }) async {
+    final operation = label ?? 'async operation';
+
     try {
       final value = await task();
 
+      logEvent('[$operation] Sucesso');
+
       return (null, value);
     } on Exception catch (e, stack) {
-      debugPrint('>>>>>>>>> Exception $e');
-      debugPrint('>>>>>>>>> StackTrace $stack');
+      logEvent('[$operation] Erro: $e', error: e.toString(), stackTrace: stack);
 
       final Failure? error = errorHandler?.handleError(e);
 
