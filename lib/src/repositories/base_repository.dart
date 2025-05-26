@@ -1,5 +1,6 @@
 import '../data/error/error_handler.dart';
 import '../entities/failure.dart';
+import '../execution/execution_politcy.dart';
 import '../logging/logger.dart';
 
 typedef Task<T> = Future<T> Function();
@@ -12,13 +13,20 @@ abstract class BaseRepository<EH extends ErrorHandler> {
   Future<(Failure?, T?)> doAsync<T>(
     Task<T> task, {
     String? label,
+    List<ExecutionPolicy>? policies,
   }) async {
     final operation = label ?? 'async operation';
 
     try {
-      final value = await task();
+      var value = await task();
 
       logEvent('[$operation] Sucesso');
+      if (policies != null) {
+        // for (final policy in policies) {
+        //   final current = value;
+        //   value = await policy.execute(current);
+        // }
+      }
 
       return (null, value);
     } on Exception catch (e, stack) {
